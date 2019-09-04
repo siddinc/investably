@@ -1,0 +1,26 @@
+{% extends 'app/app_templates/base.html' %}
+{% load bootstrap4 %}
+
+  {% block content %}
+
+    <br>
+    <br>
+    <br>
+        <div class="container">
+            <div class="card mx-auto" style="width: 30rem;">
+                <div class="card-header text-center">
+                    <h1 class="my-auto" id="x2">Sign In</h1>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <br>
+                        <input type="submit" class="btn btn-primary btn-block" value="Sign In">
+                    </form>
+                </div>
+            </div>
+        </div>
+    <br>
+
+  {% endblock %}

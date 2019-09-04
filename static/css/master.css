@@ -1,0 +1,21 @@
+.dashboard_username {
+    padding-top: 5px;
+}
+
+.x1 {
+    align-content: center;
+}
+
+.x2 {
+    align-content: center;
+}
+
+.x3 {
+    align-content: center;
+}
+
+.x6 {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+

@@ -1,0 +1,123 @@
+{% extends 'app/app_templates/base.html' %}
+{% load bootstrap4 %}
+    
+    {% block content %}
+    
+        <br>
+        <div class="container">
+            <h3 class="display-3" style="padding-bottom: 0.5rem;">Stocks of popular companies</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="card mb-3 mx-auto" style="width: 100rem;">
+                        <div class="card-body">
+                            
+                            <canvas id="line-chart" width="800" height="450"></canvas>
+                            <script>
+                                new Chart(document.getElementById("line-chart"), {
+                                type: 'line',
+                                data: {
+                                  labels: [01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 11, 12],
+                                  datasets: [{ 
+                                      data: [39.4456, 19.4047, 5.0705, 9.5624, 16.3406, 18.2101, 26.0342, 19.2403, 16.4944, 3.5295, -6.1385, -5.3401],
+                                      label: "Google",
+                                      borderColor: "#3e95cd",
+                                      fill: false
+                                    }, { 
+                                      data: [44.2606, 36.9705, 30.6844, 35.6739, 35.9560, 31.8844, 42.4084, 35.0445, 35.8798, 24.8656, 16.7140, 8.3182],
+                                      label: "Microsoft",
+                                      borderColor: "#8e5ea2",
+                                      fill: false
+                                    }, { 
+                                      data: [82.8699, 91.4455, 81.1185, 109.1292, 93.5484, 124.0456, 86.0766, 87.1812, 99.4509, 57.2098, 5.8565, -8.1406],
+                                      label: "Netflix",
+                                      borderColor: "#3cba9f",
+                                      fill: false
+                                    }, { 
+                                      data: [-5.9952, -2.7825, 0.5241, -5.7661, -2.3225, -2.3282, -0.1034, -4.9202, -1.7926, -24.7621, -24.0867, -27.0551],
+                                      label: "IBM",
+                                      borderColor: "#e8c3b9",
+                                      fill: false
+                                    }, { 
+                                      data: [15.3561, 23.4733, 26.0022, 26.6198, 18.3723, 32.0586, 42.9245, 41.7716, 38.2850, 35.6653, 31.9626, 8.2749],
+                                      label: "Motorola",
+                                      borderColor: "#c45850",
+                                      fill: false
+                                    }
+                                  ]
+                                },
+                                options: {
+                                  title: {
+                                    display: true,
+                                    text: 'Rate of change v/s months of 2018'
+                                  }
+                                }
+                            });
+                            </script>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="card-deck">
+
+                        <div class="card" style="height: 25rem; width: 42rem;">
+                            <div class="card-header">
+                                <h5 class="card-title display-5">Popular</h5>
+                                <p class="card-text">Most popular funds</p>
+                            </div>
+                            <div class="card-body x6">
+                                <ul class="list-group list-group-flush x4">
+                                    <li class="list-group-item">Apple, Inc. (AAPL) ~ 38(+0%)</li>
+                                    <li class="list-group-item">Apollo Group, Inc. (APOL) ~ 38(+1.05%)</li>
+                                    <li class="list-group-item">MasterCard, Inc. (MA) ~ 22(+-1.82%)</li>
+                                    <li class="list-group-item">BroadCom Corp. (BRCL) ~ 23(+-3.48%)</li>
+                                    <li class="list-group-item">Gaiam, Inc. (GAIA) ~ 28(+0%)</li>
+                                    <li class="list-group-item">Bebe Stores, Inc. (BEBE) ~ 22(+0.91%)</li>
+                                    <li class="list-group-item">Ruthigen, Inc. (RTGN) ~ 0(+0%)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card" style="height: 25rem; width: 42rem;">
+                            <div class="card-header">
+                                <h5 class="card-title display-5">Gainers</h5>
+                                <p class="card-text">Gaining funds</p>
+                            </div>
+                            <div class="card-body x6">
+                                <ul class="list-group list-group-flush x5">
+                                    <li class="list-group-item">TNT EXPRESS (TNTE.AS) ~ 4(+10%)</li>
+                                    <li class="list-group-item">Vringo, Inc. (VRNG) ~ 2(+20%)</li>
+                                    <li class="list-group-item">Walgreen Co. (WAG) ~ 4(10%)</li>
+                                    <li class="list-group-item">Expedia, Inc. (EXPE) ~ 24(+5%)</li>
+                                    <li class="list-group-item">LiveDeal, Inc. (LIVE) ~ 17(+4.17%)</li>
+                                    <li class="list-group-item">Tiffany & Co. (TIF) ~ 19(+5.26%)</li>
+                                    <li class="list-group-item">Fiat S.p.A (F.MI) ~ 23(+3.48%)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card" style="height: 25rem; width: 42rem;">
+                            <div class="card-header">
+                                <h5 class="card-title display-5">Losers</h5>
+                                <p class="card-text">Losing funds</p>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush x6">
+                                    <li class="list-group-item">DEXIA (DEXB>BI) ~ 2(+-10%)</li>
+                                    <li class="list-group-item">Versartis, Inc. (VSAR) ~ 5(+-12%)</li>
+                                    <li class="list-group-item">Ordina (ORDI>AS) ~ 14(+-4.29%)</li>
+                                    <li class="list-group-item">TomTom NV (TOM2.AS) ~ 20(+-4%)</li>
+                                    <li class="list-group-item">Daimlar AG (DAI.DE) ~ 21(+-4.76%)</li>
+                                    <li class="list-group-item">Sprint Nextel Corp. (S) ~ 21(+-4.76%)</li>
+                                    <li class="list-group-item">Mecom Group plc (MEC.L) ~ 10(+-6%)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+    {% endblock %}

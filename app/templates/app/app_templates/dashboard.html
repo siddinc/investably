@@ -1,0 +1,77 @@
+{% extends 'app/app_templates/base.html' %}
+{% load bootstrap4 %}
+    
+    {% block content %}
+
+        <br>
+        <div class="container">
+            <h3 class="display-4" style="padding-bottom: 0.5rem;">My portfolio</h3>
+            <div class="container">
+                <div class="row">
+                    <table class="table table-bordered text-center table-hover">
+                        <thead class="thead-light">
+                          <tr>
+                            <th>Symbol</th>
+                            <th>Day Open</th>
+                            <th>($)Price</th>
+                            <th>Previous Close</th>
+                            <th>Change Percent</th>
+                            <th>Volume</th>
+                            <th>($)Amount Invested</th>
+                            <th>Operation</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in user_portfolio_stocks %}
+                            <tr>
+                                <td>{{ item.symbol }}</td>
+                                <td>{{ item.day_open }}</td>
+                                <td>{{ item.price }}</td>
+                                <td>{{ item.previous_close }}</td>
+                                <td>{{ item.change_percent }}</td>
+                                <td>{{ item.volume }}</td>
+                                <td>{{ item.get_amount }}</td>
+                                <td>
+                                    <a href="{% url 'app:stock_edit' symbol=item.symbol %}"><button type="button" class="btn btn-warning" style="width: 3rem;"><i class="fas fa-pencil-alt"></i></button></a>
+                                    <a href="{% url 'app:stock_delete' symbol=item.symbol %}"><button type="button" class="btn btn-danger" style="width: 3rem;"><i class="far fa-trash-alt"></i></button></a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <h3 class="display-4" style="padding-bottom: 0.5rem;">Top stocks</h3>
+            <div class="container">
+                <div class="row">
+                    <table class="table table-bordered text-center table-hover">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Symbol</th>
+                                <th>Name</th>
+                                <th>($)Price</th>
+                                <th>Dividend yield</th>
+                                <th>Earning/Share</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in symbols %}
+                            <tr>
+                                <td>{{ item.symbol }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.price }}</td>
+                                <td>{{ item.dividend_yield }}</td>
+                                <td>{{ item.earning_share }}</td>
+                                <td><a href="{% url 'app:stock_add' symbol=item.symbol %}"><button type="button" class="btn btn-primary" style="width: 6rem;"><i class="fas fa-plus-circle"></i></button></a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <br>
+
+    {% endblock %}

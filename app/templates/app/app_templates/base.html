@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/master.css' %}">
+        <script src="{% static 'js/master.js' %}"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <title>app</title>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #3f51b5;">
+            <a class="navbar-brand mybrand" href="{% url 'index' %}"><i class="fab fa-gg" style="padding-right: 0.7rem; font-size: 3rem;"></i><b style="padding-bottom: 3rem; font-size: 3rem;">Investably</b></a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'app:stock_search' %}"><button type="button" class="btn btn-outline-light"><i class="fas fa-search"></i> Search</button></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}"><button type="button" class="btn btn-outline-light"><i class="fas fa-chart-line"></i> Dashboard</button></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'app:logout' %}"><button type="button" class="btn btn-outline-light"><i class="fas fa-sign-out-alt"></i> Sign Out</button></a></li>
+                    <li class="nav-item user_text dashboard_username"><a class="nav-link">Hello, {{ user.username }}</a></li>
+
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'app:login' %}"><button type="button" class="btn btn-outline-light"><i class="fas fa-sign-in-alt"></i> Sign In</button></a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'app:signup' %}"><button type="button" class="btn btn-outline-light"><i class="fas fa-user-plus"></i> Register</button></a></li>
+                {% endif %}
+                </ul>
+            </div>
+      </nav>
+
+      <div class="container">
+
+        {% block content %}
+
+        {% endblock %}
+
+      </div>
+    
+    <script src="{% static 'js/master.js' %}"></script>
+
+    </body>
+</html>

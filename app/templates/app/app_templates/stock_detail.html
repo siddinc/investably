@@ -1,0 +1,76 @@
+{% extends 'app/app_templates/base.html' %}
+{% load bootstrap4 %}
+{% load staticfiles %}
+
+    {% block content %}
+
+        <br>
+        <div class="container">
+            <h1 class="display-4" style="padding-bottom: 0.5rem;">Stock predictions</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="card mb-3 mx-auto" style="width: 100rem;">
+                        <img class="card-img-top mx-auto" src={% static "images/"|add:symbol|add:".png" %} alt="OOPS" style="width: 55rem; padding-top: 0.5rem;">
+                        <div class="card-body">
+                            <h5 class="card-title display-5">Legend</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><span style="color: #b71c1c; padding-right: 0.7rem;"><b>---------</b></span><b>Close</b> ~ Specifies the roc for closing prices of stocks</li>
+                                <li class="list-group-item"><span style="color: blue; padding-right: 0.7rem;"><b>---------</b></span><b>Short Moving Average</b> ~ Responds quickly to the changes in the price of stocks</li>
+                                <li class="list-group-item"><span style="color: #ffc107; padding-right: 0.7rem;"><b>---------</b></span><b>Long Moving Average</b> ~ Responds slowly to the changes in the price of stocks</li>
+                                <li class="list-group-item"><span style="color: ; padding-right: 0.7rem;"><b><i class="fas fa-caret-up" style="color: yellow; padding-left:1rem;"></i></b></span><b style="padding-left: 2.2rem;">Buying Point</b> ~ Specifies the buying point for a particular stock</li>
+                                <li class="list-group-item"><span style="color: ; padding-right: 0.7rem;"><b><i class="fas fa-caret-up" style="color: black; padding-left:1rem;"></i></b></span><b style="padding-left: 2.3rem;">Selling Point</b> ~ Specifies the selling point for a particular stock</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <h1 class="display-4" style="padding-bottom: 0.5rem;">Stock details</h1>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card" style="height: 20rem;">
+                            <div class="card-header">
+                                <h5 class="card-title text-center">{{ symbol }}</h5>
+                            </div>
+                            <div class="card-body x6">
+                                <ul class="list-group list-group-flush x4">
+                                    <li class="list-group-item"><b>OPENED:</b> {{ opened }}</li>
+                                    <li class="list-group-item"><b>HIGH:</b> {{ high }}</li>
+                                    <li class="list-group-item"><b>LOW:</b> {{ low }}</li>
+                                    <li class="list-group-item"><b>PRICE:</b>$ {{ price }}</li>
+                                    <li class="list-group-item"><b>CHANGE PERCENT:</b> {{ change_percent }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="card" style="height: 20rem;">
+                            <div class="card-header">
+                                <h5 class="card-title text-center">{{ symbol }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <form method="post">
+                                {% csrf_token %}
+                                    <div class="form-group">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                        {% bootstrap_form form %}    
+                                                </div>
+                                                    <a href="{% url 'dashboard' %}"><button type="submit" class="btn btn-primary btn-lg" style="width: 29rem;">Submit</button></a>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+
+    {% endblock %}

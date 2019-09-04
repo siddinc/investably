@@ -1,0 +1,6 @@
+venv
+db.sqlite3
+.vscode
+app/APIKEYS.py
+app/data.json
+static/images
