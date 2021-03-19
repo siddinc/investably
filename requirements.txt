@@ -13,7 +13,7 @@ Django==2.1.7
 django-bootstrap4==0.0.7
 django-cors-headers==2.5.0
 django-templated-mail==1.1.1
-djangorestframework==3.9.2
+djangorestframework==3.11.2
 djoser==1.4.0
 Faker==1.0.1
 fpdf==1.7.2
